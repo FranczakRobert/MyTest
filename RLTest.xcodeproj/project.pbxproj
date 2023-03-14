@@ -15,6 +15,7 @@
 		1997B0C029C0C8C7006F2D2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1997B0BE29C0C8C7006F2D2C /* LaunchScreen.storyboard */; };
 		1997B0C929C0CCB6006F2D2C /* RegisterViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B0C829C0CCB6006F2D2C /* RegisterViewControler.swift */; };
 		1997B0CB29C0CCCC006F2D2C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B0CA29C0CCCC006F2D2C /* LoginViewController.swift */; };
+		1997B0CE29C0D84D006F2D2C /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1997B0CD29C0D84D006F2D2C /* SuccessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1997B0C129C0C8C7006F2D2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1997B0C829C0CCB6006F2D2C /* RegisterViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControler.swift; sourceTree = "<group>"; };
 		1997B0CA29C0CCCC006F2D2C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1997B0CD29C0D84D006F2D2C /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				1997B0B729C0C8C6006F2D2C /* ViewController.swift */,
 				1997B0C829C0CCB6006F2D2C /* RegisterViewControler.swift */,
 				1997B0CA29C0CCCC006F2D2C /* LoginViewController.swift */,
+				1997B0CD29C0D84D006F2D2C /* SuccessViewController.swift */,
 			);
 			path = Controler;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				1997B0B429C0C8C6006F2D2C /* AppDelegate.swift in Sources */,
 				1997B0C929C0CCB6006F2D2C /* RegisterViewControler.swift in Sources */,
 				1997B0CB29C0CCCC006F2D2C /* LoginViewController.swift in Sources */,
+				1997B0CE29C0D84D006F2D2C /* SuccessViewController.swift in Sources */,
 				1997B0B629C0C8C6006F2D2C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
