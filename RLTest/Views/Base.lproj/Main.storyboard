@@ -92,7 +92,7 @@
                                     <constraint firstAttribute="height" constant="45" id="x4c-vQ-Y2l"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="eVJ-Pw-07c">
                                 <rect key="frame" x="97" y="257" width="221" height="45"/>
@@ -136,7 +136,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2jN-7L-pxZ"/>
                     <connections>
-                        <outlet property="emailTextfield" destination="eVJ-Pw-07c" id="Fjp-Pa-9wF"/>
+                        <outlet property="emailTextfield" destination="ble-9b-37S" id="QnW-rQ-emB"/>
                         <outlet property="passwordTextfield" destination="eVJ-Pw-07c" id="KH9-5A-uQR"/>
                         <segue destination="0BX-Yh-Ije" kind="show" identifier="LoginToSuccess" id="tKh-1F-REl"/>
                     </connections>
@@ -260,7 +260,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Szv-rF-7kk"/>
+        <segue reference="tKh-1F-REl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
