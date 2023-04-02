@@ -16,15 +16,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         textLabel.text = ""
         var counter = 0.0
+        
         for i in titleText {
-            Timer.scheduledTimer(withTimeInterval: 0.1 * counter, repeats: false) {(timer) in
+            
+            Timer.scheduledTimer(withTimeInterval: 0.1 * counter, repeats: false) { timer in
                 self.textLabel.text! += String(i)
             }
             counter += 1
         }
-        
     }
-
-
 }
-

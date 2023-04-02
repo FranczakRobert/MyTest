@@ -7,16 +7,17 @@
 
 import UIKit
 import Firebase
+
+
+
 class SuccessViewController: UIViewController {
+    
+    let db = Firestore.firestore()
     
     @IBOutlet weak var messageTextfield: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var messages: [Message] = [
-        Message(sender: "1@2.com", body: "Hi!"),
-        Message(sender: "a@b.com", body: "Hello!"),
-        Message(sender: "1@2.com", body: "What's up?!")
-    ]
+    var messages: [Message] = []
     
     override func viewDidLoad() {
         //tableView.delegate = self
@@ -26,10 +27,50 @@ class SuccessViewController: UIViewController {
         navigationItem.hidesBackButton = true
         
         tableView.register(UINib(nibName: Constants.cellNibname, bundle: nil), forCellReuseIdentifier: Constants.cellID)
+        
+        loadMessages()
+    }
+    
+    func loadMessages() {
+        db.collection(Constants.FireStore.collectionName).getDocuments { querySnapshot, error in
+            if let safeError = error {
+                print("Read data - failed \(safeError)")
+            }
+            else {
+                if let queryDocument = querySnapshot?.documents {
+                    for doc in queryDocument {
+                        var document = doc.data()
+                        if let senderMsg = document[Constants.FireStore.senderFiled] as? String , let bodyMsg = document[Constants.FireStore.bodyFiled] as? String {
+                            let newMessage = Message(sender: senderMsg, body: bodyMsg)
+                            
+                            DispatchQueue.main.async {
+                                tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     
+    
+    
     @IBAction func sendMessagePressed(_ sender: UIButton) {
+        
+         if let msgBody = messageTextfield.text, let author = Auth.auth().currentUser?.email {
+             db.collection(Constants.FireStore.collectionName).addDocument(data:[
+                Constants.FireStore.senderFiled : author,
+                Constants.FireStore.bodyFiled   : msgBody,
+                Constants.FireStore.dataField   : CACurrentMediaTime()
+             ]){(error) in
+                 if let e = error {
+                     print( "SIE SPIERDOLILO COS: \(e.localizedDescription)")
+                 } else {
+                     print("WSZYSTKO CACY POSZLO BYCZKQ")
+                 }
+             }
+        }
     }
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
@@ -55,22 +96,7 @@ extension SuccessViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellID, for: indexPath) as! MessageCell
         
         cell.label.text = "\(messages[indexPath.row].body)"
-    
-        // config this cell
-//        var config = UIListContentConfiguration.cell()
-//        config.text = "\(messages[indexPath.row].sender)"
-//        config.secondaryText = "\(messages[indexPath.row].body)"
-//        config.image = UIImage(named: "MeAvatar")
-//        cell.contentConfiguration = config
-        
         
         return cell
     }
 }
-
-//extension SuccessViewController : UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
-//}
-
