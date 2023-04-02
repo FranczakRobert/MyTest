@@ -39,12 +39,13 @@ class SuccessViewController: UIViewController {
             else {
                 if let queryDocument = querySnapshot?.documents {
                     for doc in queryDocument {
-                        var document = doc.data()
+                        let document = doc.data()
                         if let senderMsg = document[Constants.FireStore.senderFiled] as? String , let bodyMsg = document[Constants.FireStore.bodyFiled] as? String {
                             let newMessage = Message(sender: senderMsg, body: bodyMsg)
+                            self.messages.append(newMessage)
                             
                             DispatchQueue.main.async {
-                                tableView.reloadData()
+                                self.tableView.reloadData()
                             }
                         }
                     }
