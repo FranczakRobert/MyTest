@@ -18,6 +18,6 @@ struct Constants {
         static let collectionName = "messages"
         static let senderFiled    = "sender"
         static let bodyFiled      = "body"
-        static let dataField      = "data"
+        static let dateField      = "date"
     }
 }
