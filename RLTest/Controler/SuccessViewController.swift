@@ -67,18 +67,21 @@ class SuccessViewController: UIViewController {
     @IBAction func sendMessagePressed(_ sender: UIButton) {
         
          if let msgBody = messageTextfield.text, let author = Auth.auth().currentUser?.email {
-             db.collection(Constants.FireStore.collectionName).addDocument(data:[
-                Constants.FireStore.senderFiled : author,
-                Constants.FireStore.bodyFiled   : msgBody,
-                Constants.FireStore.dateField   : Date().timeIntervalSince1970
-             ]){(error) in
-                 if let e = error {
-                     print( "SIE SPAPRALO COS: \(e.localizedDescription)")
-                 } else {
-                     print("WSZYSTKO CACY POSZLO")
-                     self.messageTextfield.text = ""
+             if msgBody.prefix(1) != " " && msgBody.count > 0 {
+                 db.collection(Constants.FireStore.collectionName).addDocument(data:[
+                    Constants.FireStore.senderFiled : author,
+                    Constants.FireStore.bodyFiled   : msgBody,
+                    Constants.FireStore.dateField   : Date().timeIntervalSince1970
+                 ]){(error) in
+                     if let e = error {
+                         print( "SIE SPAPRALO COS: \(e.localizedDescription)")
+                     } else {
+                         print("WSZYSTKO CACY POSZLO")
+                         self.messageTextfield.text = ""
+                     }
                  }
              }
+             
         }
     }
     
@@ -109,11 +112,13 @@ extension SuccessViewController : UITableViewDataSource {
             cell.leftImageView.isHidden = true
             cell.rightImageView.isHidden = false
             cell.messageBubble.backgroundColor = .systemMint
+            cell.label.textAlignment = .right
         }
         else {
             cell.leftImageView.isHidden = false
             cell.rightImageView.isHidden = true
             cell.messageBubble.backgroundColor = .systemCyan
+            cell.label.textAlignment = .left
         }
         
         cell.label.text = "\(messages[indexPath.row].body)"
